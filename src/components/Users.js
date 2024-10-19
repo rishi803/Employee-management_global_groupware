@@ -46,8 +46,11 @@ const Users = () => {
   };
 
   return (
-    <div>
-      <h1>Users</h1>
+    <div className="main-container">
+      <h1 style={{ 
+        textAlign:"center", 
+        marginTop:"20px"
+      }}>Users</h1>
       <table>
         <thead>
           <tr>
@@ -72,7 +75,7 @@ const Users = () => {
           ))}
         </tbody>
       </table>
-      <div>
+      <div className="pagination">
         {Array.from({ length: totalPages }, (_, i) => (
           <button key={i + 1} onClick={() => handlePageChange(i + 1)}>
             {i + 1}

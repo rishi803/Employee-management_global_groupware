@@ -20,11 +20,12 @@ const Login = () => {
       window.location.href = '/users';
     } catch (error) {
       setError(error.message);
+      alert("Use Mail: eve.holt@reqres.in , Use Password: cityslicka ")
     }
   };
 
   return (
-    <div>
+    <div class='login'>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label>

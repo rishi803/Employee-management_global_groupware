@@ -13,8 +13,8 @@ const User = ({ user, onDelete }) => {
       <p>First Name: {user.first_name}</p>
       <p>Last Name: {user.last_name}</p>
       <p>Email: {user.email}</p>
-      <button onClick={handleEdit}>Edit</button>
-      <button onClick={() => onDelete(user.id)}>Delete</button>
+      <button onClick={handleEdit} className='edit-btn'>Edit</button>
+      <button onClick={() => onDelete(user.id)} className='delete-btn'>Delete</button>
     </div>
   );
 };
