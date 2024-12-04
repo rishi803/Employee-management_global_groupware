@@ -1,9 +1,23 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
 import Login from './components/Login';
 import Users from './components/Users';
 import './App.css'
-import EditUser from './components/EditUser'; // Import the EditUser component
+
+
+axios.interceptors.response.use(
+  (response) => response, // Pass through if response is successful
+  (error) => {
+    if (error.response && error.response.status === 401) {
+    
+      localStorage.removeItem('token'); 
+      alert('Session expired. Please log in again.');
+      window.location.href = '/'; 
+    }
+    return Promise.reject(error);
+  }
+);
 
 const App = () => {
   return (
@@ -12,7 +26,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/edit-user/:id" element={<EditUser />} /> {/* New edit route */}
         </Routes>
       </div>
     </Router>

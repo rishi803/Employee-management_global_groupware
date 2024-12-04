@@ -16,7 +16,7 @@ const Login = () => {
         password,
       });
       setToken(response.data.token);
-      // Navigate to Users List page
+      localStorage.setItem('token', response.data.token); 
       window.location.href = '/users';
     } catch (error) {
       setError(error.message);
@@ -28,16 +28,23 @@ const Login = () => {
     <div class='login'>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <br />
+
+        <div>
+          <label htmlFor='email'>
+            Email:
+          </label>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} name='email' />
+        </div>
+
+
+        <div>
+          <label htmlFor='password'>
+            Password:
+          </label>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name='password' />
+
+        </div>
+
         <button type="submit">Login</button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
